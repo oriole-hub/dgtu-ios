@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4604D2F22F6E87990036E322 /* SwiftNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F12F6E87990036E322 /* SwiftNavigation */; };
+		4604D2F42F6E87990036E322 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F32F6E87990036E322 /* SwiftUINavigation */; };
+		4604D2F72F6E87D80036E322 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F62F6E87D80036E322 /* Dependencies */; };
+		4604D2F92F6E87D80036E322 /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F82F6E87D80036E322 /* DependenciesMacros */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4604D2D32F6E76FE0036E322 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +59,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4604D2F72F6E87D80036E322 /* Dependencies in Frameworks */,
+				4604D2F42F6E87990036E322 /* SwiftUINavigation in Frameworks */,
+				4604D2F92F6E87D80036E322 /* DependenciesMacros in Frameworks */,
+				4604D2F22F6E87990036E322 /* SwiftNavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +123,10 @@
 			);
 			name = "rtk-pass";
 			packageProductDependencies = (
+				4604D2F12F6E87990036E322 /* SwiftNavigation */,
+				4604D2F32F6E87990036E322 /* SwiftUINavigation */,
+				4604D2F62F6E87D80036E322 /* Dependencies */,
+				4604D2F82F6E87D80036E322 /* DependenciesMacros */,
 			);
 			productName = "rtk-pass";
 			productReference = 4604D2C52F6E76FC0036E322 /* rtk-pass.app */;
@@ -195,6 +210,10 @@
 			);
 			mainGroup = 4604D2BC2F6E76FC0036E322;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4604D2F02F6E87990036E322 /* XCRemoteSwiftPackageReference "swift-navigation" */,
+				4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4604D2C62F6E76FC0036E322 /* Products */;
 			projectDirPath = "";
@@ -578,6 +597,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4604D2F02F6E87990036E322 /* XCRemoteSwiftPackageReference "swift-navigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-navigation";
+			requirement = {
+				kind = exactVersion;
+				version = 2.7.0;
+			};
+		};
+		4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = exactVersion;
+				version = 1.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4604D2F12F6E87990036E322 /* SwiftNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4604D2F02F6E87990036E322 /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = SwiftNavigation;
+		};
+		4604D2F32F6E87990036E322 /* SwiftUINavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4604D2F02F6E87990036E322 /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = SwiftUINavigation;
+		};
+		4604D2F62F6E87D80036E322 /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+		4604D2F82F6E87D80036E322 /* DependenciesMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = DependenciesMacros;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4604D2BD2F6E76FC0036E322 /* Project object */;
 }
