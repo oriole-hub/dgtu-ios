@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AuthRootView: View {
     @StateObject private var viewModel = AuthViewModel()
+    @StateObject private var lockViewModel = LockViewModel()
 
     var body: some View {
         NavigationStack {
@@ -14,7 +15,7 @@ struct AuthRootView: View {
                 case .unauthenticated:
                     unauthenticatedView
                 case let .authenticated(session):
-                    authenticatedView(session)
+                    authenticatedGateView(session)
                 }
             }
             .padding()
@@ -55,6 +56,19 @@ struct AuthRootView: View {
         }
     }
 
+    private func authenticatedGateView(_ session: AuthSession) -> some View {
+        Group {
+            if lockViewModel.mode == .unlocked {
+                authenticatedView(session)
+            } else {
+                LockScreenView(viewModel: lockViewModel)
+            }
+        }
+        .task(id: session.token.accessToken) {
+            await lockViewModel.prepareForAuthenticatedLaunch()
+        }
+    }
+
     private func authenticatedView(_ session: AuthSession) -> some View {
         VStack(spacing: 16) {
             Text("Welcome, \(session.user.fullName)")
@@ -65,6 +79,11 @@ struct AuthRootView: View {
                 .foregroundStyle(.secondary)
 
             QRView(session: session)
+
+            NavigationLink("Settings") {
+                SettingsView()
+            }
+            .buttonStyle(.bordered)
 
             Button("Refresh Session") {
                 Task { await viewModel.refreshCurrentSession() }

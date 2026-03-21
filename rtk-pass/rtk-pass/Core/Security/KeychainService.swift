@@ -11,6 +11,9 @@ struct KeychainService: Sendable {
 enum KeychainKey {
     static let accessToken = "auth.accessToken"
     static let refreshToken = "auth.refreshToken"
+    static let appLockPinHash = "lock.pinHash"
+    static let appLockPinInitialized = "lock.pinInitialized"
+    static let appLockFaceIDEnabled = "lock.faceIDEnabled"
 }
 
 extension KeychainService {
@@ -75,5 +78,34 @@ extension DependencyValues {
     var keychainService: KeychainService {
         get { self[KeychainService.self] }
         set { self[KeychainService.self] = newValue }
+    }
+}
+
+extension KeychainService {
+    func saveAppLockPinHash(_ value: String) throws {
+        try save(value, KeychainKey.appLockPinHash)
+    }
+
+    func loadAppLockPinHash() throws -> String? {
+        try load(KeychainKey.appLockPinHash)
+    }
+
+    func saveAppLockPinInitialized(_ isInitialized: Bool) throws {
+        try save(isInitialized ? "1" : "0", KeychainKey.appLockPinInitialized)
+    }
+
+    func loadAppLockPinInitialized() throws -> Bool {
+        (try load(KeychainKey.appLockPinInitialized)) == "1"
+    }
+
+    func saveAppLockFaceIDEnabled(_ isEnabled: Bool) throws {
+        try save(isEnabled ? "1" : "0", KeychainKey.appLockFaceIDEnabled)
+    }
+
+    func loadAppLockFaceIDEnabled() throws -> Bool? {
+        guard let value = try load(KeychainKey.appLockFaceIDEnabled) else {
+            return nil
+        }
+        return value == "1"
     }
 }
