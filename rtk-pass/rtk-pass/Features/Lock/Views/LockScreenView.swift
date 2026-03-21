@@ -120,7 +120,18 @@ struct LockScreenView: View {
             .frame(width: pinpadButtonSize, height: pinpadButtonSize)
             .glassEffect(in: Circle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PinPadKeyButtonStyle())
+    }
+}
+
+/// Scales the key down slightly while pressed for tactile feedback.
+private struct PinPadKeyButtonStyle: ButtonStyle {
+    private let pressedScale: CGFloat = 0.9
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? pressedScale : 1)
+            .animation(.spring(response: 0.22, dampingFraction: 0.68), value: configuration.isPressed)
     }
 }
 
