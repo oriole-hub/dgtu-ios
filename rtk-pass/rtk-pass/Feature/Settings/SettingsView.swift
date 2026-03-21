@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @ObservedObject var authViewModel: AuthViewModel
     @StateObject private var viewModel = SettingsViewModel()
 
     var body: some View {
@@ -28,6 +29,14 @@ struct SettingsView: View {
                 .buttonStyle(.borderedProminent)
             }
 
+            Section {
+                Button(role: .destructive) {
+                    Task { await authViewModel.logout() }
+                } label: {
+                    Text("Logout")
+                }
+            }
+
             if let statusMessage = viewModel.statusMessage {
                 Section {
                     Text(statusMessage)
@@ -45,6 +54,7 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
+        .toolbar(.visible, for: .navigationBar)
         .task {
             viewModel.load()
         }
@@ -53,6 +63,6 @@ struct SettingsView: View {
 
 #Preview {
     NavigationStack {
-        SettingsView()
+        SettingsView(authViewModel: AuthViewModel())
     }
 }
