@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct rtk_passApp: App {
+    @StateObject private var screenCaptureMonitor = ScreenCaptureMonitor()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                ContentView()
+                ScreenProtectionOverlay(isVisible: screenCaptureMonitor.isProtectionOverlayVisible)
+            }
+            .environmentObject(screenCaptureMonitor)
         }
     }
 }
