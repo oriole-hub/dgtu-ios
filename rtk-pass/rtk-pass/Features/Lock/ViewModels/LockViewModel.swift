@@ -40,24 +40,24 @@ final class LockViewModel: ObservableObject {
     var title: String {
         switch mode {
         case .needsSetup:
-            return "Create PIN"
+            return "Придумайте пин"
         case .confirmSetup:
-            return "Confirm PIN"
+            return "Подтвердите пин"
         case .locked:
-            return "Enter PIN"
+            return "Введите пин"
         case .unlocked:
-            return "Unlocked"
+            return "Разблокировано"
         }
     }
 
     var subtitle: String {
         switch mode {
         case .needsSetup:
-            return "Set a 4-digit PIN to protect your app."
+            return "Задайте 4-значный пин для защиты приложения."
         case .confirmSetup:
-            return "Enter the same 4-digit PIN again."
+            return "Введите тот же пин ещё раз."
         case .locked:
-            return "Unlock RTK Pass."
+            return "Разблокируйте RTK Pass."
         case .unlocked:
             return ""
         }
@@ -87,7 +87,7 @@ final class LockViewModel: ObservableObject {
             enteredPin = ""
             mode = .unlocked
         } else {
-            errorMessage = "Face ID failed. Enter your PIN."
+            errorMessage = "Face ID не сработал. Введите пин."
         }
     }
 
@@ -103,7 +103,7 @@ final class LockViewModel: ObservableObject {
             enteredPin = ""
             guard confirmation == firstPin else {
                 mode = .needsSetup
-                errorMessage = "PINs do not match. Try again."
+                errorMessage = "Пины не совпадают. Попробуйте снова."
                 return
             }
             do {
@@ -124,7 +124,7 @@ final class LockViewModel: ObservableObject {
                 errorMessage = nil
                 mode = .unlocked
             } else {
-                errorMessage = "Incorrect PIN. Try again."
+                errorMessage = "Неверный пин. Попробуйте снова."
             }
         case .unlocked:
             break

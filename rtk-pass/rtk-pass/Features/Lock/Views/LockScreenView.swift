@@ -3,6 +3,11 @@ import SwiftUI
 struct LockScreenView: View {
     @ObservedObject var viewModel: LockViewModel
 
+    private let titleFontSize: CGFloat = 36
+    private let pinpadButtonSize: CGFloat = 70
+    private let digitFontSize: CGFloat = 24
+    private let gridSpacing: CGFloat = 24
+
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -10,43 +15,61 @@ struct LockScreenView: View {
     ]
 
     var body: some View {
-        VStack(spacing: 24) {
-            header
-            pinIndicators
-            keypad
+        GeometryReader { geo in
+            ZStack {
+                AuthBubbleBackground()
+                    .ignoresSafeArea()
 
-            if let errorMessage = viewModel.errorMessage {
-                Text(errorMessage)
-                    .foregroundStyle(.red)
-                    .font(.footnote)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
-            }
+                VStack(spacing: 20) {
+                    header
 
-            if viewModel.canUseFaceID {
-                Button {
-                    Task { await viewModel.unlockWithFaceID() }
-                } label: {
-                    Label("Unlock with Face ID", systemImage: "faceid")
+                    pinIndicators
+
+                    keypad
+
+                    if let errorMessage = viewModel.errorMessage {
+                        Text(errorMessage)
+                            .foregroundStyle(.red)
+                            .font(.footnote)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                    }
+
+                    if viewModel.canUseFaceID {
+                        Button {
+                            Task { await viewModel.unlockWithFaceID() }
+                        } label: {
+                            Label("Разблокировать с Face ID", systemImage: "faceid")
+                                .font(.system(size: 16, weight: .semibold))
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.horizontal, 24)
+                        .glassEffect(in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .disabled(viewModel.isBiometricInProgress)
+                        .opacity(viewModel.isBiometricInProgress ? 0.5 : 1)
+                    }
                 }
-                .buttonStyle(.bordered)
-                .disabled(viewModel.isBiometricInProgress)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding(.horizontal, 24)
+                .padding(.top, geo.safeAreaInsets.top + 8)
+                .padding(.bottom, geo.safeAreaInsets.bottom + 16)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
     }
 
     private var header: some View {
         VStack(spacing: 8) {
-            Image(systemName: "lock.circle.fill")
-                .font(.system(size: 52))
-                .foregroundStyle(.tint)
             Text(viewModel.title)
-                .font(.title2.weight(.semibold))
-            Text(viewModel.subtitle)
-                .font(.footnote)
-                .foregroundStyle(.secondary)
+                .font(.system(size: titleFontSize, weight: .bold))
+                .multilineTextAlignment(.center)
+            if !viewModel.subtitle.isEmpty {
+                Text(viewModel.subtitle)
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
         }
     }
 
@@ -62,7 +85,7 @@ struct LockScreenView: View {
     }
 
     private var keypad: some View {
-        LazyVGrid(columns: columns, spacing: 12) {
+        LazyVGrid(columns: columns, spacing: gridSpacing) {
             ForEach(1...9, id: \.self) { number in
                 keypadButton(title: "\(number)") {
                     viewModel.appendDigit(number)
@@ -70,7 +93,7 @@ struct LockScreenView: View {
             }
 
             Color.clear
-                .frame(height: 60)
+                .frame(width: pinpadButtonSize, height: pinpadButtonSize)
 
             keypadButton(title: "0") {
                 viewModel.appendDigit(0)
@@ -80,23 +103,22 @@ struct LockScreenView: View {
                 viewModel.deleteLastDigit()
             }
         }
-        .frame(maxWidth: 320)
+        .frame(maxWidth: 3 * pinpadButtonSize + 2 * gridSpacing)
     }
 
     private func keypadButton(title: String? = nil, systemImage: String? = nil, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             ZStack {
-                Circle()
-                    .fill(.secondary.opacity(0.15))
-                    .frame(width: 60, height: 60)
                 if let title {
                     Text(title)
-                        .font(.title3.weight(.semibold))
+                        .font(.system(size: digitFontSize, weight: .semibold))
                 } else if let systemImage {
                     Image(systemName: systemImage)
-                        .font(.title3)
+                        .font(.system(size: digitFontSize, weight: .medium))
                 }
             }
+            .frame(width: pinpadButtonSize, height: pinpadButtonSize)
+            .glassEffect(in: Circle())
         }
         .buttonStyle(.plain)
     }

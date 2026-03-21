@@ -79,6 +79,6 @@ final class LockViewModelTests: XCTestCase {
 
         [0, 0, 0, 0].forEach(viewModel.appendDigit)
         XCTAssertEqual(viewModel.mode, .locked)
-        XCTAssertEqual(viewModel.errorMessage, "Incorrect PIN. Try again.")
+        XCTAssertEqual(viewModel.errorMessage, "Неверный пин. Попробуйте снова.")
     }
 }
