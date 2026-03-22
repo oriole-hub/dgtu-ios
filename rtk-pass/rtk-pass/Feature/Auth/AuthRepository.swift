@@ -6,6 +6,7 @@ struct AuthRepository: Sendable {
     var login: @Sendable (_ login: String, _ password: String) async throws -> AuthSession
     var logout: @Sendable (_ session: AuthSession?) async -> Void
     var refreshSession: @Sendable (_ session: AuthSession) async throws -> AuthSession
+    var fetchProfile: @Sendable (_ accessToken: String) async throws -> AuthUser
 }
 
 extension AuthRepository {
@@ -59,6 +60,9 @@ extension AuthRepository {
                 }
 
                 return AuthSession(token: token, user: user)
+            },
+            fetchProfile: { accessToken in
+                try await authService.me(accessToken)
             }
         )
     }
@@ -75,7 +79,10 @@ extension AuthRepository: DependencyKey {
             )
         },
         logout: { _ in },
-        refreshSession: { _ in throw AuthError.refreshUnavailable }
+        refreshSession: { _ in throw AuthError.refreshUnavailable },
+        fetchProfile: { _ in
+            AuthUser(id: 1, fullName: "Test", email: "test@example.com", login: "test", role: .guest)
+        }
     )
 }
 

@@ -12,6 +12,31 @@ struct AuthUser: Equatable, Sendable {
     let email: String
     let login: String
     let role: UserRole
+    /// Populated when decoded from full `/auth/me` payload.
+    let jobTitle: String?
+    let officeSummary: String?
+    /// Original `role` string from API when present (for display if it does not map to `UserRole`).
+    let roleRawFromServer: String?
+
+    init(
+        id: Int,
+        fullName: String,
+        email: String,
+        login: String,
+        role: UserRole,
+        jobTitle: String? = nil,
+        officeSummary: String? = nil,
+        roleRawFromServer: String? = nil
+    ) {
+        self.id = id
+        self.fullName = fullName
+        self.email = email
+        self.login = login
+        self.role = role
+        self.jobTitle = jobTitle
+        self.officeSummary = officeSummary
+        self.roleRawFromServer = roleRawFromServer
+    }
 }
 
 struct AuthSession: Equatable, Sendable {
@@ -54,6 +79,9 @@ struct UserResponse: Decodable, Sendable {
     let email: String
     let login: String
     let role: UserRole
+    let roleRawFromServer: String?
+    let jobTitle: String?
+    let officeSummary: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -61,10 +89,55 @@ struct UserResponse: Decodable, Sendable {
         case email
         case login
         case role
+        case jobTitle = "job_title"
+        case office
+    }
+
+    private struct OfficePayload: Decodable, Sendable {
+        let address: String?
+        let city: String?
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(Int.self, forKey: .id)
+        fullName = try c.decode(String.self, forKey: .fullName)
+        email = try c.decodeIfPresent(String.self, forKey: .email) ?? ""
+        login = try c.decodeIfPresent(String.self, forKey: .login) ?? ""
+        let roleDecoded = Self.decodeRoleAndRaw(container: c)
+        role = roleDecoded.role
+        roleRawFromServer = roleDecoded.raw
+        jobTitle = try c.decodeIfPresent(String.self, forKey: .jobTitle)
+        officeSummary = (try? c.decodeIfPresent(OfficePayload.self, forKey: .office)).flatMap(Self.summarizeOffice)
     }
 
     func toDomain() -> AuthUser {
-        AuthUser(id: id, fullName: fullName, email: email, login: login, role: role)
+        AuthUser(
+            id: id,
+            fullName: fullName,
+            email: email,
+            login: login,
+            role: role,
+            jobTitle: jobTitle,
+            officeSummary: officeSummary,
+            roleRawFromServer: roleRawFromServer
+        )
+    }
+
+    private static func decodeRoleAndRaw(container c: KeyedDecodingContainer<CodingKeys>) -> (role: UserRole, raw: String?) {
+        guard c.contains(.role) else { return (.guest, nil) }
+        if let isNil = try? c.decodeNil(forKey: .role), isNil { return (.guest, nil) }
+        guard let raw = try? c.decode(String.self, forKey: .role) else { return (.guest, nil) }
+        let mapped = UserRole(rawValue: raw) ?? .guest
+        return (mapped, raw)
+    }
+
+    private static func summarizeOffice(_ office: OfficePayload) -> String? {
+        let parts = [office.city, office.address]
+            .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+        if parts.isEmpty { return nil }
+        return parts.joined(separator: " · ")
     }
 }
 

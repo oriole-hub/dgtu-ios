@@ -19,12 +19,20 @@ extension APIClient {
         let method: HTTPMethod
         let body: Data?
         let bearerToken: String?
+        let queryItems: [URLQueryItem]?
 
-        init(path: String, method: HTTPMethod, body: Data? = nil, bearerToken: String? = nil) {
+        init(
+            path: String,
+            method: HTTPMethod,
+            body: Data? = nil,
+            bearerToken: String? = nil,
+            queryItems: [URLQueryItem]? = nil
+        ) {
             self.path = path
             self.method = method
             self.body = body
             self.bearerToken = bearerToken
+            self.queryItems = queryItems
         }
     }
 
@@ -38,7 +46,22 @@ extension APIClient {
     static func live(baseURL: URL) -> APIClient {
         let logger = Logger(subsystem: "dgtu-ios", category: "APIClient")
         return APIClient(send: { endpoint in
-            var request = URLRequest(url: baseURL.appending(path: endpoint.path))
+            let urlWithoutQuery = baseURL.appending(path: endpoint.path)
+            let requestURL: URL
+            if let items = endpoint.queryItems, !items.isEmpty {
+                guard var components = URLComponents(url: urlWithoutQuery, resolvingAgainstBaseURL: false) else {
+                    throw AuthError.invalidResponse
+                }
+                components.queryItems = items
+                guard let composed = components.url else {
+                    throw AuthError.invalidResponse
+                }
+                requestURL = composed
+            } else {
+                requestURL = urlWithoutQuery
+            }
+
+            var request = URLRequest(url: requestURL)
             request.httpMethod = endpoint.method.rawValue
             request.httpBody = endpoint.body
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")

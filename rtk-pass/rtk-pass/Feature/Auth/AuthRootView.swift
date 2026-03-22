@@ -93,6 +93,7 @@ private struct AuthenticatedHomeView: View {
 
     @StateObject private var qrViewModel = QRViewModel()
     @State private var isQRModalPresented = false
+    @State private var isStatisticsPresented = false
 
     private let fieldHeight: CGFloat = 48
     private let fieldFontSize: CGFloat = 18
@@ -130,6 +131,25 @@ private struct AuthenticatedHomeView: View {
                         .buttonStyle(.plain)
                         .frame(width: contentWidth, height: fieldHeight)
                         .glassEffect(in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+                        Button {
+                            isStatisticsPresented = true
+                        } label: {
+                            HStack(spacing: 10) {
+                                Image(systemName: "chart.bar.doc.horizontal")
+                                    .font(.system(size: 20, weight: .semibold))
+                                Text("Статистика")
+                                    .font(.system(size: fieldFontSize, weight: .semibold))
+                            }
+                            .frame(maxWidth: .infinity, minHeight: fieldHeight, maxHeight: fieldHeight)
+                        }
+                        .buttonStyle(.plain)
+                        .frame(width: contentWidth, height: fieldHeight)
+                        .glassEffect(in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+                        AttendanceCalendarSection(accessToken: session.token.accessToken)
+                            .frame(width: contentWidth)
+                            .glassEffect(in: RoundedRectangle(cornerRadius: 14, style: .continuous))
 
                         NavigationLink {
                             SettingsView(authViewModel: authViewModel)
@@ -176,6 +196,9 @@ private struct AuthenticatedHomeView: View {
             .onDisappear {
                 qrViewModel.stop()
             }
+        }
+        .sheet(isPresented: $isStatisticsPresented) {
+            StatisticsSheetView(accessToken: session.token.accessToken)
         }
     }
 }
