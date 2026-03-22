@@ -1,0 +1,661 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4604D2F22F6E87990036E322 /* SwiftNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F12F6E87990036E322 /* SwiftNavigation */; };
+		4604D2F42F6E87990036E322 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F32F6E87990036E322 /* SwiftUINavigation */; };
+		4604D2F72F6E87D80036E322 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F62F6E87D80036E322 /* Dependencies */; };
+		4604D2F92F6E87D80036E322 /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F82F6E87D80036E322 /* DependenciesMacros */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4604D2D32F6E76FE0036E322 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4604D2BD2F6E76FC0036E322 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4604D2C42F6E76FC0036E322;
+			remoteInfo = "rtk-pass";
+		};
+		4604D2DD2F6E76FE0036E322 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4604D2BD2F6E76FC0036E322 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4604D2C42F6E76FC0036E322;
+			remoteInfo = "rtk-pass";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4604D2C52F6E76FC0036E322 /* rtk-pass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rtk-pass.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4604D2D22F6E76FE0036E322 /* rtk-passTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rtk-passTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4604D2DC2F6E76FE0036E322 /* rtk-passUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rtk-passUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		4604D2C72F6E76FC0036E322 /* rtk-pass */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "rtk-pass";
+			sourceTree = "<group>";
+		};
+		4604D2D52F6E76FE0036E322 /* rtk-passTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "rtk-passTests";
+			sourceTree = "<group>";
+		};
+		4604D2DF2F6E76FE0036E322 /* rtk-passUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "rtk-passUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4604D2C22F6E76FC0036E322 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4604D2F72F6E87D80036E322 /* Dependencies in Frameworks */,
+				4604D2F42F6E87990036E322 /* SwiftUINavigation in Frameworks */,
+				4604D2F92F6E87D80036E322 /* DependenciesMacros in Frameworks */,
+				4604D2F22F6E87990036E322 /* SwiftNavigation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4604D2CF2F6E76FE0036E322 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4604D2D92F6E76FE0036E322 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4604D2BC2F6E76FC0036E322 = {
+			isa = PBXGroup;
+			children = (
+				4604D2C72F6E76FC0036E322 /* rtk-pass */,
+				4604D2D52F6E76FE0036E322 /* rtk-passTests */,
+				4604D2DF2F6E76FE0036E322 /* rtk-passUITests */,
+				4604D2C62F6E76FC0036E322 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4604D2C62F6E76FC0036E322 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4604D2C52F6E76FC0036E322 /* rtk-pass.app */,
+				4604D2D22F6E76FE0036E322 /* rtk-passTests.xctest */,
+				4604D2DC2F6E76FE0036E322 /* rtk-passUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4604D2C42F6E76FC0036E322 /* rtk-pass */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4604D2E62F6E76FE0036E322 /* Build configuration list for PBXNativeTarget "rtk-pass" */;
+			buildPhases = (
+				4604D2C12F6E76FC0036E322 /* Sources */,
+				4604D2C22F6E76FC0036E322 /* Frameworks */,
+				4604D2C32F6E76FC0036E322 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4604D2C72F6E76FC0036E322 /* rtk-pass */,
+			);
+			name = "rtk-pass";
+			packageProductDependencies = (
+				4604D2F12F6E87990036E322 /* SwiftNavigation */,
+				4604D2F32F6E87990036E322 /* SwiftUINavigation */,
+				4604D2F62F6E87D80036E322 /* Dependencies */,
+				4604D2F82F6E87D80036E322 /* DependenciesMacros */,
+				46AD22F62F6F4F180057909A /* EFQRCode */,
+			);
+			productName = "rtk-pass";
+			productReference = 4604D2C52F6E76FC0036E322 /* rtk-pass.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4604D2D12F6E76FE0036E322 /* rtk-passTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4604D2E92F6E76FE0036E322 /* Build configuration list for PBXNativeTarget "rtk-passTests" */;
+			buildPhases = (
+				4604D2CE2F6E76FE0036E322 /* Sources */,
+				4604D2CF2F6E76FE0036E322 /* Frameworks */,
+				4604D2D02F6E76FE0036E322 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4604D2D42F6E76FE0036E322 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4604D2D52F6E76FE0036E322 /* rtk-passTests */,
+			);
+			name = "rtk-passTests";
+			packageProductDependencies = (
+			);
+			productName = "rtk-passTests";
+			productReference = 4604D2D22F6E76FE0036E322 /* rtk-passTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4604D2DB2F6E76FE0036E322 /* rtk-passUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4604D2EC2F6E76FE0036E322 /* Build configuration list for PBXNativeTarget "rtk-passUITests" */;
+			buildPhases = (
+				4604D2D82F6E76FE0036E322 /* Sources */,
+				4604D2D92F6E76FE0036E322 /* Frameworks */,
+				4604D2DA2F6E76FE0036E322 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4604D2DE2F6E76FE0036E322 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4604D2DF2F6E76FE0036E322 /* rtk-passUITests */,
+			);
+			name = "rtk-passUITests";
+			packageProductDependencies = (
+			);
+			productName = "rtk-passUITests";
+			productReference = 4604D2DC2F6E76FE0036E322 /* rtk-passUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4604D2BD2F6E76FC0036E322 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					4604D2C42F6E76FC0036E322 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					4604D2D12F6E76FE0036E322 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = 4604D2C42F6E76FC0036E322;
+					};
+					4604D2DB2F6E76FE0036E322 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = 4604D2C42F6E76FC0036E322;
+					};
+				};
+			};
+			buildConfigurationList = 4604D2C02F6E76FC0036E322 /* Build configuration list for PBXProject "rtk-pass" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4604D2BC2F6E76FC0036E322;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4604D2F02F6E87990036E322 /* XCRemoteSwiftPackageReference "swift-navigation" */,
+				4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				46AD22F52F6F4F170057909C /* XCRemoteSwiftPackageReference "EFQRCode" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4604D2C62F6E76FC0036E322 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4604D2C42F6E76FC0036E322 /* rtk-pass */,
+				4604D2D12F6E76FE0036E322 /* rtk-passTests */,
+				4604D2DB2F6E76FE0036E322 /* rtk-passUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4604D2C32F6E76FC0036E322 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4604D2D02F6E76FE0036E322 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4604D2DA2F6E76FE0036E322 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4604D2C12F6E76FC0036E322 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4604D2CE2F6E76FE0036E322 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4604D2D82F6E76FE0036E322 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4604D2D42F6E76FE0036E322 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4604D2C42F6E76FC0036E322 /* rtk-pass */;
+			targetProxy = 4604D2D32F6E76FE0036E322 /* PBXContainerItemProxy */;
+		};
+		4604D2DE2F6E76FE0036E322 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4604D2C42F6E76FC0036E322 /* rtk-pass */;
+			targetProxy = 4604D2DD2F6E76FE0036E322 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4604D2E42F6E76FE0036E322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 73AGDSA9QN;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4604D2E52F6E76FE0036E322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 73AGDSA9QN;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4604D2E72F6E76FE0036E322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 73AGDSA9QN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Use Face ID to quickly unlock RTK Pass.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shakulin.rtk-pass";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4604D2E82F6E76FE0036E322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 73AGDSA9QN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Use Face ID to quickly unlock RTK Pass.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shakulin.rtk-pass";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4604D2EA2F6E76FE0036E322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 73AGDSA9QN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shakulin.rtk-passTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rtk-pass.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/rtk-pass";
+			};
+			name = Debug;
+		};
+		4604D2EB2F6E76FE0036E322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 73AGDSA9QN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shakulin.rtk-passTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rtk-pass.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/rtk-pass";
+			};
+			name = Release;
+		};
+		4604D2ED2F6E76FE0036E322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 73AGDSA9QN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shakulin.rtk-passUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "rtk-pass";
+			};
+			name = Debug;
+		};
+		4604D2EE2F6E76FE0036E322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 73AGDSA9QN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shakulin.rtk-passUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "rtk-pass";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4604D2C02F6E76FC0036E322 /* Build configuration list for PBXProject "rtk-pass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4604D2E42F6E76FE0036E322 /* Debug */,
+				4604D2E52F6E76FE0036E322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4604D2E62F6E76FE0036E322 /* Build configuration list for PBXNativeTarget "rtk-pass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4604D2E72F6E76FE0036E322 /* Debug */,
+				4604D2E82F6E76FE0036E322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4604D2E92F6E76FE0036E322 /* Build configuration list for PBXNativeTarget "rtk-passTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4604D2EA2F6E76FE0036E322 /* Debug */,
+				4604D2EB2F6E76FE0036E322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4604D2EC2F6E76FE0036E322 /* Build configuration list for PBXNativeTarget "rtk-passUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4604D2ED2F6E76FE0036E322 /* Debug */,
+				4604D2EE2F6E76FE0036E322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4604D2F02F6E87990036E322 /* XCRemoteSwiftPackageReference "swift-navigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-navigation";
+			requirement = {
+				kind = exactVersion;
+				version = 2.7.0;
+			};
+		};
+		4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = exactVersion;
+				version = 1.11.0;
+			};
+		};
+		46AD22F52F6F4F170057909C /* XCRemoteSwiftPackageReference "EFQRCode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EFPrefix/EFQRCode";
+			requirement = {
+				kind = exactVersion;
+				version = 7.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4604D2F12F6E87990036E322 /* SwiftNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4604D2F02F6E87990036E322 /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = SwiftNavigation;
+		};
+		4604D2F32F6E87990036E322 /* SwiftUINavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4604D2F02F6E87990036E322 /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = SwiftUINavigation;
+		};
+		4604D2F62F6E87D80036E322 /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+		4604D2F82F6E87D80036E322 /* DependenciesMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = DependenciesMacros;
+		};
+		46AD22F62F6F4F180057909A /* EFQRCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46AD22F52F6F4F170057909C /* XCRemoteSwiftPackageReference "EFQRCode" */;
+			productName = EFQRCode;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 4604D2BD2F6E76FC0036E322 /* Project object */;
+}
