@@ -29,11 +29,3 @@ MVP приложения цифрового пропуска для сотруд
 - Защита от скриншотов
 - Blur при уходе в background
 
-## Backend
-- REST API
-- OpenAPI спецификация: `docs/api/openapi.yaml`
-
-## Важно для AI агента
-- Всегда использовать Dependency Injection через `swift-dependencies`
-- Все сервисы должны быть описаны через протоколы
-- Не обращаться к API напрямую из ViewModel — только через Repository
