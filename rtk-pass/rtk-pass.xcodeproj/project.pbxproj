@@ -11,6 +11,7 @@
 		4604D2F42F6E87990036E322 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F32F6E87990036E322 /* SwiftUINavigation */; };
 		4604D2F72F6E87D80036E322 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F62F6E87D80036E322 /* Dependencies */; };
 		4604D2F92F6E87D80036E322 /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 4604D2F82F6E87D80036E322 /* DependenciesMacros */; };
+		46AD23462F6F576C0057909C /* EFQRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 46AD22F62F6F4F180057909A /* EFQRCode */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46AD23462F6F576C0057909C /* EFQRCode in Frameworks */,
 				4604D2F72F6E87D80036E322 /* Dependencies in Frameworks */,
 				4604D2F42F6E87990036E322 /* SwiftUINavigation in Frameworks */,
 				4604D2F92F6E87D80036E322 /* DependenciesMacros in Frameworks */,

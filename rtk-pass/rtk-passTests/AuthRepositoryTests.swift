@@ -98,6 +98,27 @@ final class AuthRepositoryTests: XCTestCase {
             XCTFail("Unexpected error: \(error)")
         }
     }
+
+    func testFetchProfileCallsMeWithToken() async throws {
+        let keychain = InMemoryKeychainService()
+        let authService = AuthService(
+            login: { _, _ in fatalError("unused") },
+            me: { token in
+                XCTAssertEqual(token, "my-access")
+                return AuthUser(id: 42, fullName: "Alex", email: "alex@example.com", login: "alex", role: .employee)
+            },
+            logout: { _ in },
+            refresh: { _ in fatalError("unused") }
+        )
+
+        let repository = AuthRepository.live(authService: authService, keychainService: keychain.service)
+
+        let user = try await repository.fetchProfile("my-access")
+
+        XCTAssertEqual(user.id, 42)
+        XCTAssertEqual(user.login, "alex")
+        XCTAssertEqual(user.role, .employee)
+    }
 }
 
 private final class InMemoryKeychainService {
