@@ -21,9 +21,10 @@ struct QRView: View {
                     .interpolation(.none)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: 260, maxHeight: 260)
+//                    .frame(maxWidth: 260, maxHeight: 260)
+                    .frame(maxWidth: 300, maxHeight: 300)
                     .padding(8)
-                    .background(.white, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .background(.white, in: .rect)
             } else if viewModel.isLoading {
                 ProgressView("Генерация пропуска…")
                     .frame(maxWidth: .infinity, minHeight: 160)

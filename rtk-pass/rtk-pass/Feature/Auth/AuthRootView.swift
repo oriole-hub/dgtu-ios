@@ -117,9 +117,7 @@ private struct AuthenticatedHomeView: View {
                             .foregroundStyle(.secondary)
 
                         Button {
-                            withAnimation(.easeInOut(duration: 0.2)) {
-                                isQRModalPresented = true
-                            }
+                            isQRModalPresented = true
                         } label: {
                             HStack(spacing: 10) {
                                 Image(systemName: "qrcode")
@@ -149,55 +147,36 @@ private struct AuthenticatedHomeView: View {
                     .padding(.top, geo.safeAreaInsets.top + 8)
                     .padding(.bottom, geo.safeAreaInsets.bottom + 16)
                 }
-
-                if isQRModalPresented {
-                    qrModalOverlay(contentWidth: contentWidth, safeBottom: geo.safeAreaInsets.bottom)
-                }
             }
             .onDisappear {
                 qrViewModel.stop()
             }
         }
-    }
-
-    @ViewBuilder
-    private func qrModalOverlay(contentWidth: CGFloat, safeBottom: CGFloat) -> some View {
-        ZStack(alignment: .bottom) {
-            Color.black.opacity(0.4)
-                .ignoresSafeArea()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        isQRModalPresented = false
+        .sheet(isPresented: $isQRModalPresented) {
+            NavigationStack {
+                GeometryReader { geo in
+                    let sheetContentWidth = geo.size.width * contentWidthFraction
+                    ScrollView {
+                        QRView(session: session, glassButtonWidth: sheetContentWidth, viewModel: qrViewModel)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 16)
                     }
                 }
-
-            VStack(spacing: 16) {
-                Capsule()
-                    .fill(.secondary.opacity(0.35))
-                    .frame(width: 36, height: 5)
-
-                Text("QR для входа в здание")
-                    .font(.headline)
-                    .multilineTextAlignment(.center)
-
-                QRView(session: session, glassButtonWidth: contentWidth, viewModel: qrViewModel)
+                .navigationTitle("QR для входа в здание")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Готово") {
+                            isQRModalPresented = false
+                        }
+                    }
+                }
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 16)
-            .padding(.bottom, safeBottom + 16)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(.regularMaterial)
-            )
-            .padding(.horizontal, 12)
-            .transition(.move(edge: .bottom).combined(with: .opacity))
+            .presentationDragIndicator(.visible)
+            .onDisappear {
+                qrViewModel.stop()
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .transition(.opacity)
-        .zIndex(1)
     }
 }
 

@@ -4,7 +4,7 @@ import UIKit
 
 enum QRPassImageGenerator {
     private static let qrOutputWidth: CGFloat = 220
-    private static let qrPadding: CGFloat = 12
+    private static let qrPadding: CGFloat = 0
 
     private static let gradientImage: CGImage? = makeRadialGradientCGImage(sideLength: 512)
 
@@ -14,7 +14,7 @@ enum QRPassImageGenerator {
         let fillParams = EFStyleImageFillParams(
             icon: makeCenterIcon(),
             backdrop: EFStyleParamBackdrop(
-                cornerRadius: 12,
+                cornerRadius: 0,
                 color: UIColor.white.cgColor,
                 quietzone: nil
             ),
