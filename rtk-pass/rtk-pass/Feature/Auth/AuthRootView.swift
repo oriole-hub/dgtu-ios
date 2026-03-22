@@ -91,6 +91,9 @@ private struct AuthenticatedHomeView: View {
     let session: AuthSession
     @ObservedObject var authViewModel: AuthViewModel
 
+    @StateObject private var qrViewModel = QRViewModel()
+    @State private var isQRModalPresented = false
+
     private let fieldHeight: CGFloat = 48
     private let fieldFontSize: CGFloat = 18
     private let titleFontSize: CGFloat = 36
@@ -113,7 +116,22 @@ private struct AuthenticatedHomeView: View {
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
 
-                        QRView(session: session, glassButtonWidth: contentWidth)
+                        Button {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                isQRModalPresented = true
+                            }
+                        } label: {
+                            HStack(spacing: 10) {
+                                Image(systemName: "qrcode")
+                                    .font(.system(size: 20, weight: .semibold))
+                                Text("QR для входа в здание")
+                                    .font(.system(size: fieldFontSize, weight: .semibold))
+                            }
+                            .frame(maxWidth: .infinity, minHeight: fieldHeight, maxHeight: fieldHeight)
+                        }
+                        .buttonStyle(.plain)
+                        .frame(width: contentWidth, height: fieldHeight)
+                        .glassEffect(in: RoundedRectangle(cornerRadius: 14, style: .continuous))
 
                         NavigationLink {
                             SettingsView(authViewModel: authViewModel)
@@ -131,8 +149,55 @@ private struct AuthenticatedHomeView: View {
                     .padding(.top, geo.safeAreaInsets.top + 8)
                     .padding(.bottom, geo.safeAreaInsets.bottom + 16)
                 }
+
+                if isQRModalPresented {
+                    qrModalOverlay(contentWidth: contentWidth, safeBottom: geo.safeAreaInsets.bottom)
+                }
+            }
+            .onDisappear {
+                qrViewModel.stop()
             }
         }
+    }
+
+    @ViewBuilder
+    private func qrModalOverlay(contentWidth: CGFloat, safeBottom: CGFloat) -> some View {
+        ZStack(alignment: .bottom) {
+            Color.black.opacity(0.4)
+                .ignoresSafeArea()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isQRModalPresented = false
+                    }
+                }
+
+            VStack(spacing: 16) {
+                Capsule()
+                    .fill(.secondary.opacity(0.35))
+                    .frame(width: 36, height: 5)
+
+                Text("QR для входа в здание")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+
+                QRView(session: session, glassButtonWidth: contentWidth, viewModel: qrViewModel)
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 16)
+            .padding(.bottom, safeBottom + 16)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(.regularMaterial)
+            )
+            .padding(.horizontal, 12)
+            .transition(.move(edge: .bottom).combined(with: .opacity))
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .transition(.opacity)
+        .zIndex(1)
     }
 }
 

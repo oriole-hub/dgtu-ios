@@ -1,5 +1,3 @@
-import CoreImage
-import CoreImage.CIFilterBuiltins
 import Dependencies
 import Foundation
 import UIKit
@@ -59,7 +57,7 @@ final class QRViewModel: ObservableObject {
 
         do {
             let nextPass = try await qrRepository.generatePass(session)
-            guard let image = QRCodeRenderer.image(from: nextPass.payload) else {
+            guard let image = QRPassImageGenerator.image(from: nextPass.payload) else {
                 throw QRError.generationFailed
             }
 
@@ -111,24 +109,5 @@ final class QRViewModel: ObservableObject {
             return
         }
         remainingSeconds = max(0, Int(pass.expiresAt.timeIntervalSince(now())))
-    }
-}
-
-enum QRCodeRenderer {
-    static func image(from payload: String, sideLength: CGFloat = 260) -> UIImage? {
-        let context = CIContext()
-        let filter = CIFilter.qrCodeGenerator()
-        filter.message = Data(payload.utf8)
-        filter.correctionLevel = "M"
-
-        guard let outputImage = filter.outputImage else { return nil }
-        let scaleX = sideLength / outputImage.extent.size.width
-        let scaleY = sideLength / outputImage.extent.size.height
-        let transformed = outputImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
-
-        guard let cgImage = context.createCGImage(transformed, from: transformed.extent) else {
-            return nil
-        }
-        return UIImage(cgImage: cgImage)
     }
 }

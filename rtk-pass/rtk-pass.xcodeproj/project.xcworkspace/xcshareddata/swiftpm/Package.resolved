@@ -1,5 +1,5 @@
 {
-  "originHash" : "bd9400d20da2db540be0159eacb0b4bb7d0f26885d44ceaaa5d57be5c8c270f4",
+  "originHash" : "be53187f0a39f55792ba9987ff3fbc10e3dc7a3144ffb76698fbfb0f719e8971",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "fd16d76fd8b9a976d88bfb6cacc05ca8d19c91b6",
         "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "efqrcode",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EFPrefix/EFQRCode",
+      "state" : {
+        "revision" : "07ff9e2e83a4bbd384e5a8e33b47f389c9aac762",
+        "version" : "7.0.3"
       }
     },
     {
@@ -89,6 +98,24 @@
       "state" : {
         "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
         "version" : "602.0.0"
+      }
+    },
+    {
+      "identity" : "swift_qrcodejs",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EFPrefix/swift_qrcodejs.git",
+      "state" : {
+        "revision" : "d1605333f7edac39b4518538ef4f2638fdd2e4d6",
+        "version" : "2.3.1"
+      }
+    },
+    {
+      "identity" : "swiftdraw",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swhitty/SwiftDraw.git",
+      "state" : {
+        "revision" : "a19594794cdcdee5135caad3bc119096c50c92c2",
+        "version" : "0.22.0"
       }
     },
     {

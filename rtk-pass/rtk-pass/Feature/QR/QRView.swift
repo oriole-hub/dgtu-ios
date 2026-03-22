@@ -5,7 +5,7 @@ struct QRView: View {
     /// Matches login-style primary actions when set from `AuthenticatedHomeView`.
     var glassButtonWidth: CGFloat? = nil
 
-    @StateObject private var viewModel = QRViewModel()
+    @ObservedObject var viewModel: QRViewModel
 
     private let fieldHeight: CGFloat = 48
     private let fieldFontSize: CGFloat = 18
@@ -25,7 +25,7 @@ struct QRView: View {
                     .padding(8)
                     .background(.white, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             } else if viewModel.isLoading {
-                ProgressView("Generating pass...")
+                ProgressView("Генерация пропуска…")
                     .frame(maxWidth: .infinity, minHeight: 160)
             } else {
                 placeholderView
@@ -65,9 +65,6 @@ struct QRView: View {
         .task(id: session.token.accessToken) {
             await viewModel.loadInitialPassIfNeeded(session: session)
         }
-        .onDisappear {
-            viewModel.stop()
-        }
     }
 
     private var placeholderView: some View {
@@ -75,13 +72,11 @@ struct QRView: View {
             .fill(.secondary.opacity(0.15))
             .frame(width: 220, height: 220)
             .overlay {
-                VStack(spacing: 8) {
-                    Image(systemName: "qrcode")
-                        .font(.system(size: 30))
-                    Text("QR not generated yet")
-                        .font(.footnote)
-                }
-                .foregroundStyle(.secondary)
+                Text("Нет данных пропуска")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 12)
             }
     }
 
@@ -99,17 +94,29 @@ struct QRView: View {
             ZStack {
                 AuthBubbleBackground()
                     .ignoresSafeArea()
-                QRView(
-                    session: AuthSession(
-                        token: AuthToken(accessToken: "preview-token", refreshToken: nil, tokenType: "bearer"),
-                        user: AuthUser(id: 1, fullName: "Preview", email: "preview@example.com", login: "preview", role: .employee)
-                    ),
-                    glassButtonWidth: contentWidth
-                )
-                .padding(.horizontal, 24)
-                .padding(.top, geo.safeAreaInsets.top + 8)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                QRViewPreviewHost(contentWidth: contentWidth, safeTop: geo.safeAreaInsets.top)
             }
         }
+    }
+}
+
+private struct QRViewPreviewHost: View {
+    let contentWidth: CGFloat
+    let safeTop: CGFloat
+
+    @StateObject private var viewModel = QRViewModel()
+
+    var body: some View {
+        QRView(
+            session: AuthSession(
+                token: AuthToken(accessToken: "preview-token", refreshToken: nil, tokenType: "bearer"),
+                user: AuthUser(id: 1, fullName: "Preview", email: "preview@example.com", login: "preview", role: .employee)
+            ),
+            glassButtonWidth: contentWidth,
+            viewModel: viewModel
+        )
+        .padding(.horizontal, 24)
+        .padding(.top, safeTop + 8)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 }

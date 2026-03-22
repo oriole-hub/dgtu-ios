@@ -127,6 +127,7 @@
 				4604D2F32F6E87990036E322 /* SwiftUINavigation */,
 				4604D2F62F6E87D80036E322 /* Dependencies */,
 				4604D2F82F6E87D80036E322 /* DependenciesMacros */,
+				46AD22F62F6F4F180057909A /* EFQRCode */,
 			);
 			productName = "rtk-pass";
 			productReference = 4604D2C52F6E76FC0036E322 /* rtk-pass.app */;
@@ -213,6 +214,7 @@
 			packageReferences = (
 				4604D2F02F6E87990036E322 /* XCRemoteSwiftPackageReference "swift-navigation" */,
 				4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				46AD22F52F6F4F170057909C /* XCRemoteSwiftPackageReference "EFQRCode" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4604D2C62F6E76FC0036E322 /* Products */;
@@ -617,6 +619,14 @@
 				version = 1.11.0;
 			};
 		};
+		46AD22F52F6F4F170057909C /* XCRemoteSwiftPackageReference "EFQRCode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EFPrefix/EFQRCode";
+			requirement = {
+				kind = exactVersion;
+				version = 7.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -639,6 +649,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4604D2F52F6E87D80036E322 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
 			productName = DependenciesMacros;
+		};
+		46AD22F62F6F4F180057909A /* EFQRCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46AD22F52F6F4F170057909C /* XCRemoteSwiftPackageReference "EFQRCode" */;
+			productName = EFQRCode;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
